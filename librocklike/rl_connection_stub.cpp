@@ -5,6 +5,8 @@ namespace rocklike {
 
 ConnectionStub::~ConnectionStub() {
 
+
+
 }
 //
 //int send_data(char data[]) {
