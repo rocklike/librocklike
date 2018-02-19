@@ -18,7 +18,6 @@ dnl Initialize Libtool
 LT_INIT
 
 AC_CONFIG_FILES(Makefile
-                exampleProgram/Makefile
                 librocklike/Makefile
                 include/Makefile)
 AC_OUTPUT
