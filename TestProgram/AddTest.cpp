@@ -1,22 +1,22 @@
 #include "gtest/gtest.h"
-
-class Calc {
-public:
-	int add(int x, int y) {
-		return x + y;
-	}
-};
+#include "rl_network_networkmessage.hpp"
+#include <cstring>
 
 namespace {
 
-class MyAddTest : public ::testing::Test {
+class NetworkMessageTest : public ::testing::Test {
 protected:
-	Calc mycalc;
+	void SetUp() {
+		this->message.setRequestData(this->testStr, std::strlen(this->testStr));
+	}
+	const char testStr[15] = "Hello World";
+	rocklike::NetworkMessage message;
 
 };
 
-TEST_F(MyAddTest, DoAddPositive) {
-	ASSERT_EQ( 2, mycalc.add(1,1));
+TEST_F(NetworkMessageTest, doSetGetRequestData) {
+	ASSERT_STREQ(testStr, message.getRequestData());
+	ASSERT_EQ( std::strlen(testStr), message.getRequestDataSize());
 }
 
 }
