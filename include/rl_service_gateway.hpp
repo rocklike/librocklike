@@ -3,22 +3,22 @@
 
 #include <memory>
 
-#include "rl_network_networkmessage.hpp"
+#include "rl_network_message.hpp"
 #include "rl_service_gateway_delegate.hpp"
 
-namespace rocklike {
+namespace rocklike
+{
 
+class ServiceGateway
+{
+  public:
+	ServiceGateway(std::shared_ptr<rocklike::ServiceGatewayDelegate> svcGwDelBasePtr);
+	void process(rocklike::NetworkMessage &netMsg);
 
-class ServiceGateway {
-public:
-	ServiceGateway(std::shared_ptr<ServiceGatewayDelegate> svcGwDelBasePtr);
-	void process(NetworkMessage &netMsg);
-private:
-	std::shared_ptr<ServiceGatewayDelegate> svcGwDelBasePtr_;
+  private:
+	std::shared_ptr<rocklike::ServiceGatewayDelegate> svcGwDelBasePtr_;
 };
 
-
-
-}
+} //namespace rocklike
 
 #endif /* FRAMEWORK_RL_SERVICE_GATEWAY_HPP_ */

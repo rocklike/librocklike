@@ -1,14 +1,20 @@
 #include "rl_message_dispatcher.hpp"
 
-namespace rocklike {
+namespace rocklike
+{
 
-void MessageDispatcher::operator()(Queue<RLNetworkMessage, RlQueue> & queue, ServiceGateway & svcGateway) {
+void MessageDispatcher::operator()(Queue<RLNetworkMessage, RlQueue> &queue, ServiceGateway &svcGateway)
+{
 	bool stopped = false;
-	while (!stopped) {
-		try {
+	while (!stopped)
+	{
+		try
+		{
 			NetworkMessage netMsg;
-			if (queue.pop(netMsg)) {
-				try {
+			if (queue.pop(netMsg))
+			{
+				try
+				{
 					// pass messag to ServiceGateway
 					std::cout << "Dispatcher: Got 1 Processing\n";
 					svcGateway.process(netMsg);
@@ -16,24 +22,29 @@ void MessageDispatcher::operator()(Queue<RLNetworkMessage, RlQueue> & queue, Ser
 					// get and send response
 					netMsg.connStubPtr_->send_data(netMsg.getResponseData(), netMsg.getResponseDataSize());
 					// TODO log
-				} catch(...) {
+				}
+				catch (...)
+				{
 					// TODO log
 					std::cout << "Unknown Service Gateway Error\n";
 				}
-			} else {
+			}
+			else
+			{
 				queue.wait(); // waits for 1 sec
 			}
-		} catch(QueueDisabledException & e) {
+		}
+		catch (QueueDisabledException &e)
+		{
 			// TODO log as system error, can't send a response
 			std::cout << "Queue Disabled\n";
 			stopped = true;
-		} catch(...) {
+		}
+		catch (...)
+		{
 			std::cout << "System Error\n";
 		}
 	}
 }
 
-
-} //end namespace
-
-
+} //namespace rocklike

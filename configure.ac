@@ -31,5 +31,7 @@ AC_CONFIG_FILES(Makefile
                 librocklike/Makefile
                 include/Makefile
                 GTestLib/Makefile
-                TestProgram/Makefile)
+                TestProgram/Makefile
+                Application/Makefile
+                MainProgram/Makefile)
 AC_OUTPUT

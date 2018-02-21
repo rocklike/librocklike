@@ -3,16 +3,17 @@
 
 #include <memory>
 
-namespace rocklike {
+namespace rocklike
+{
 
-class ConnectionStub {
+class ConnectionStub
+{
 
-public:
+  public:
 	virtual ~ConnectionStub();
-	virtual int send_data(const char * data, const std::size_t dataLen) = 0;
-
+	virtual int send_data(const char *data, const std::size_t dataLen) = 0;
 };
 
-} // end namespace
+} //namespace rocklike
 
 #endif /* FRAMEWORK_RL_CONNECTION_STUB_HPP_ */

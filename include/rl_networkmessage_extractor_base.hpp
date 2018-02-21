@@ -4,35 +4,37 @@
 #include <cstdlib>
 #include <queue>
 
-#include "rl_network_networkmessage.hpp"
+#include "rl_network_message.hpp"
 
-namespace rocklike {
+namespace rocklike
+{
 
-enum ExtractResult {
+enum ExtractResult
+{
 	EXTRACT_ERROR = -2,
 	DECODE_ERROR = -1,
 	SUCCESS_CONTINUE = 0,
 	SUCCESSS_STOP = 1
 };
 
-class MessageExtractorBase {
-public:
+class MessageExtractorBase
+{
+  public:
 	MessageExtractorBase();
 	virtual ~MessageExtractorBase();
-	virtual int extract(char *data, const std::size_t dataSize, std::size_t & remainingDataSize) = 0;
-	virtual NetworkMessage && decode(char *data, size_t len) = 0;
+	virtual int extract(char *data, const std::size_t dataSize, std::size_t &remainingDataSize) = 0;
+	virtual NetworkMessage &&decode(char *data, size_t len) = 0;
 	static const std::size_t BUFF_MAX_LEN = 1024;
 
-	char * readData();
+	char *readData();
 	std::size_t readDataSize();
 
-	char * sendData();
+	char *sendData();
 	std::size_t sendDataSize();
 
-	std::queue<NetworkMessage>& messagesQueue();
+	std::queue<NetworkMessage> &messagesQueue();
 
-
-private:
+  private:
 	char readData_[BUFF_MAX_LEN];
 	std::size_t readDataSize_;
 
@@ -40,10 +42,8 @@ private:
 	std::size_t sendDataSize_;
 
 	std::queue<NetworkMessage> messagesQueue_;
-
 };
 
-}
-
+} //namespace rocklike
 
 #endif /* FRAMEWORK_RL_NETWORKMESSAGE_EXTRACTOR_BASE_HPP_ */

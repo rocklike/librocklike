@@ -8,29 +8,30 @@
 #include "rl_handler_thread_pool.hpp"
 #include "rl_tcpconnection.hpp"
 
-using namespace rocklike;
+namespace rocklike
+{
 
-class RL_TCPServer {
-public:
-	RL_TCPServer(
-			boost::asio::io_context &io_context,
-			std::shared_ptr<rocklike::MessageExtractorBase> msgExtractorPtr,
-			std::shared_ptr<rocklike::HandlerThreadPool> serviceExecutorPtr
-	);
+class TCPServer
+{
+  public:
+	TCPServer(
+		boost::asio::io_context &io_context,
+		std::shared_ptr<MessageExtractorBase> msgExtractorPtr,
+		std::shared_ptr<HandlerThreadPool> handlerThreadPoolPtr);
 	void setIoContext(boost::asio::io_context io_context);
 	void open(std::string bindAddr, unsigned short port_num);
 	void accept();
-	void handleAccept(std::shared_ptr<RL_TCPConnection> newConnection, const boost::system::error_code& error);
+	void handleAccept(std::shared_ptr<RL_TCPConnection> newConnectionPtr, const boost::system::error_code &error);
 	void wait();
 
-private:
-//	std::string bindAddr;
-//	std::string port;
+  private:
+	//	std::string bindAddr;
+	//	std::string port;
 	boost::asio::ip::tcp::acceptor acceptor_;
-	std::shared_ptr<rocklike::HandlerThreadPool> serviceExecutorPtr_;
-	std::shared_ptr<rocklike::MessageExtractorBase> msgExtractorPtr_;
-
+	std::shared_ptr<HandlerThreadPool> handlerThreadPoolPtr_;
+	std::shared_ptr<MessageExtractorBase> msgExtractorPtr_;
 };
 
+} //namespace rocklike
 
 #endif /* FRAMEWORK_RL_TCPSERVER_H_ */

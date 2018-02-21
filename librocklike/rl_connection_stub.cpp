@@ -1,17 +1,10 @@
 #include "rl_connection_stub.hpp"
 
-namespace rocklike {
+namespace rocklike
+{
 
-
-ConnectionStub::~ConnectionStub() {
-
-
-
+ConnectionStub::~ConnectionStub()
+{
 }
-//
-//int send_data(char data[]) {
-//
-//}
 
-
-}
+} // namespace rocklike

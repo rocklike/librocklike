@@ -6,20 +6,19 @@
 namespace rocklike
 {
 
-class ServiceNotFoundException : public std::exception {
-public:
-	~ServiceNotFoundException() throw() {
-
+class ServiceNotFoundException : public std::exception
+{
+  public:
+	~ServiceNotFoundException() throw()
+	{
 	}
 
-	virtual char const * what() const throw() {
+	virtual char const *what() const throw()
+	{
 		return "Service Not Found.";
 	}
 };
 
-
-}
-
-
+} //namespace rocklike
 
 #endif /* EXCEPTION_RL_SERVICENOTFOUND_EXCEPTION_HPP_ */

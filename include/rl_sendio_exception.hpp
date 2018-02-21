@@ -6,20 +6,19 @@
 namespace rocklike
 {
 
-class SendIOException : public std::exception {
-public:
-	~SendIOException() throw() {
-
+class SendIOException : public std::exception
+{
+  public:
+	~SendIOException() throw()
+	{
 	}
 
-	virtual char const * what() const throw() {
+	virtual char const *what() const throw()
+	{
 		return "Error sending";
 	}
 };
 
-
-}
-
-
+} //namespace rocklike
 
 #endif /* EXCEPTION_RL_SENDIO_EXCEPTION_HPP_ */

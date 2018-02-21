@@ -6,17 +6,19 @@
 namespace rocklike
 {
 
-class ServiceRouterException : public std::exception {
-public:
-	~ServiceRouterException() throw() {
-
+class ServiceRouterException : public std::exception
+{
+  public:
+	~ServiceRouterException() throw()
+	{
 	}
 
-	virtual char const * what() const throw() {
+	virtual char const *what() const throw()
+	{
 		return "Service Router Exception";
 	}
 };
 
-}
+} //namespace rocklike
 
 #endif /* EXCEPTION_RL_SERVICEROUTER_EXCEPTION_HPP_ */

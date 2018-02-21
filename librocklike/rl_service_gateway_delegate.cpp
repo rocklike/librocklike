@@ -1,13 +1,10 @@
 #include "rl_service_gateway_delegate.hpp"
 
-namespace rocklike {
+namespace rocklike
+{
 
-
-
-ServiceGatewayDelegate::~ServiceGatewayDelegate() {
-
+ServiceGatewayDelegate::~ServiceGatewayDelegate()
+{
 }
 
-
-
-}
+} //namespace rocklike
